@@ -1,5 +1,5 @@
 from random import randint
-from jimmytoken import giveToken
+##from jimmytoken import giveToken
 import discord
 ##function imports
 import gm
@@ -70,4 +70,4 @@ async def on_message(message):
 
 
 
-client.run(giveToken())
+client.run('OTA2OTk2ODk3NjA3MjAwODU4.YYgwrw.AQQ5sFJQi_0qtV1dQBXuhIyi19I')

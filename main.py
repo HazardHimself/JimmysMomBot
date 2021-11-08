@@ -1,16 +1,42 @@
 import discord
+import requests
+import json
+import sight
+from discord.ext import commands
 
-class MyClient(discord.Client):
-    async def on_ready(self):
-        print('Logged on as', self.user)
+import uwufunc
 
-    async def on_message(self, message):
-        # don't respond to ourselves
-        if message.author == self.user:
-            return
+client = discord.Client()
 
-        if message.content == 'ping':
-            await message.channel.send('pong')
+def get_quote():
+  response = requests.get("https://zenquotes.io/api/random")
+  json_data = json.loads(response.text)
+  quote = json_data[0]['q'] + " - " + json_data[0]['a']
+  return(quote)
 
-client = MyClient()
+@client.event
+async def on_ready():
+  print('We have logged in as {0.user}'.format(client))
+
+@client.event
+async def on_message(message):
+  if message.author == client.user:
+    return
+
+  elif message.content.startswith('%cysm'):
+      await message.channel.send(sight.cysm(message.author.nick))
+
+  if message.content.startswith('%uwu'):
+    await message.channel.send((uwufunc.uwufunc(message.content)))
+
+  if message.content.lower().startswith('inspire'):
+    quote = get_quote()
+    await message.channel.send(quote)
+
+  if message.content.lower().startswith('%deny'):
+    await message.channel.send('No.')
+
+  if message.content.lower().startswith('%affirm'):
+    await message.channel.send('Yes.')
+
 client.run('OTA2OTk2ODk3NjA3MjAwODU4.YYgwrw.86iXe1S48t0-WRRd0YZt7A26bzU')

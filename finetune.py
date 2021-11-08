@@ -7,5 +7,4 @@ gpt2.finetune(sess,
               'shakespeare.txt',
               steps=10,
               model_name=model_name,
-              use_memory_saving_gradients = True,
-              only_train_transformer_layers = True)   # steps is max number of training steps
+              only_train_transformer_layers=True)   # steps is max number of training steps
