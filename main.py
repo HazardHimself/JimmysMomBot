@@ -55,6 +55,9 @@ async def on_message(message):
   elif message.content.lower().startswith('%affirm'):
     await message.channel.send('Yes.')
 
+  elif message.content.lower().startswith('%quit'):
+    quit()
+
   elif message.content.startswith('%replymode'):
     replymode = not replymode
     replystring = "Reply mode is currently set to: " + str(replymode)
@@ -89,4 +92,4 @@ async def on_message(message):
     else:
       await message.reply("Sorry, something went wrong. Try again.")
 
-client.run('OTA2OTk2ODk3NjA3MjAwODU4.YYgwrw.IOJDykvBSEg4SDKkp8EAHZWy5gA')
+client.run('AAAAAAAAAAAA there is no token only zuul')
