@@ -3,11 +3,19 @@ import requests
 import json
 import sight
 import generate
-from discord.ext import commands
+import random
 
 import uwufunc
 
 client = discord.Client()
+
+sad_words = ["sad", "depressed", "unhappy", "angry", "miserable"]
+
+starter_encouragements = [
+  "It's ok to be sad sometimes. It gets better, I promise.",
+  "Hang in there! I believe in you!",
+  "You are a great person!"
+]
 
 global replymode
 global replychannel
@@ -33,6 +41,9 @@ async def on_message(message):
   if message.author == client.user:
     return
 
+  elif message.content.lower().startswith('%quit'):
+    quit()
+
   elif message.content.startswith('%cysm'):
       await message.channel.send(sight.cysm(message.author.nick))
 
@@ -55,8 +66,8 @@ async def on_message(message):
   elif message.content.lower().startswith('%affirm'):
     await message.channel.send('Yes.')
 
-  elif message.content.lower().startswith('%quit'):
-    quit()
+  if any(word in message.content for word in sad_words):
+    await message.channel.send(random.choice(starter_encouragements))
 
   elif message.content.startswith('%replymode'):
     replymode = not replymode
@@ -76,6 +87,7 @@ async def on_message(message):
   # with context ai text generator function
   elif (replymode and (message.channel == replychannel)) or message.content.startswith('%con'):
     maxlen = 2600
+    global contstring
     contstring = ""
     for cached in client.cached_messages:
       if cached.channel == replychannel:
@@ -88,8 +100,11 @@ async def on_message(message):
       aigen = generate.contextgen((contstring))
 
     if aigen != "":
-      await message.reply(aigen)
+      await message.channel.send(aigen)
     else:
-      await message.reply("Sorry, something went wrong. Try again.")
+      await message.channel.send("Sorry, something went wrong. Try again.")
 
-client.run('AAAAAAAAAAAA there is no token only zuul')
+  elif message.content.startswith('%ayb'):
+      await message.channel.send(contstring)
+
+client.run('')

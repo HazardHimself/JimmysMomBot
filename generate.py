@@ -14,14 +14,16 @@ def aitext(hello):
     if not phrases:
         """gpt2.load_gpt2(sess)"""
         single_text = gpt2.generate(sess,
+                                    run_name='run1',
                                     return_as_list=True,
                                     model_name=model_name,
                                     length=100,
-                                    temperature=0.7,
+                                    temperature=0.9,
                                     top_p=0.9,
                                     nsamples=5,
                                     batch_size=1,
-                                    include_prefix=False)[0]
+                                    include_prefix=False,
+                                    )[0]
         phrases = single_text.splitlines()
         phrases[:] = [x for x in phrases if ((x != "<|endoftext|>") and (x != "{Attachments}"))]
     retval = phrases[0]
@@ -30,6 +32,16 @@ def aitext(hello):
 
 def contextgen(context):
     global sess
-    response = gpt2.generate(sess, model_name=model_name, length=30, prefix=context, nsamples=1, batch_size=1, truncate='\n', include_prefix=False, return_as_list=True)
+    response = gpt2.generate(sess,
+                             run_name='run1',
+                             length=30,
+                             prefix=context,
+                             nsamples=1,
+                             batch_size=1,
+                             model_name=model_name,
+                             truncate='\n',
+                             include_prefix=False,
+                             return_as_list=True,
+                             )
     return response[0]
 
