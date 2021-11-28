@@ -51,3 +51,7 @@ checkpoint/run1/events.out.tfevents.1637611155.THEA
 checkpoint/run1/events.out.tfevents.1637610307.THEA
 checkpoint/run1/counter
 checkpoint/run1/checkpoint
+/models/
+/checkpoint/
+/checkpoint/
+/models/
