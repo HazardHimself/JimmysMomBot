@@ -55,3 +55,6 @@ checkpoint/run1/checkpoint
 /checkpoint/
 /checkpoint/
 /models/
+.idea/misc.xml
+.idea/ClonedJimmysMomBot.iml
+.DS_Store
