@@ -107,4 +107,4 @@ async def on_message(message):
   elif message.content.startswith('%ayb'):
       await message.channel.send(contstring)
 
-client.run('')
+client.run('OTA2OTk2ODk3NjA3MjAwODU4.YYgwrw.Uqi1O4adisdADRYf0pbm2vhLaag')

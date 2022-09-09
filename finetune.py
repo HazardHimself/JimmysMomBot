@@ -12,7 +12,7 @@ gpt2.finetune(
             sess,
             dataset='new 1.txt',
             model_name=model_name, # Model you have already downloaded
-            steps=150, # -1 will do unlimited. Enter number of iterations otherwise
+            steps=-1, # -1 will do unlimited. Enter number of iterations otherwise
             restore_from='fresh', # Also allows 'fresh' which will overwrite old training
             run_name='run1', # The name to pull or create a checkpoint under
             print_every=10, # Print iterations every X numebr
