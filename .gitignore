@@ -55,4 +55,6 @@ checkpoint/run1/checkpoint
 /checkpoint/
 /checkpoint/
 /models/
-main.py
+.idea/misc.xml
+.idea/ClonedJimmysMomBot.iml
+.DS_Store
